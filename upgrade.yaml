@@ -1,0 +1,12 @@
+---
+- hosts: rpi
+  remote_user: pi
+  become: yes
+  tasks:
+  - name: Upgrade all packages to latest versions
+    apt:
+      name: "*"
+      autoclean: yes
+      force_apt_get: yes
+      update_cache: yes
+      state: latest
