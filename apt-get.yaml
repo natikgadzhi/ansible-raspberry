@@ -3,6 +3,15 @@
   remote_user: pi
   become: yes
   tasks:
+  - name: Install essentials
+    apt:
+      name:
+        - vim
+        - tmux
+      force_apt_get: yes
+      update_cache: yes
+      state: latest
+
   - name: Upgrade all packages to latest versions
     apt:
       name: "*"
