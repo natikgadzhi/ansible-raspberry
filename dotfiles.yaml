@@ -1,7 +1,8 @@
 ---
 - hosts: rpi
+  remote_user: pi
   tasks:
-  - name: Copy dotfiles
-    syncronize:
-
-
+  - name: Checkout .dotfiles with git
+    git:
+      repo: ssh://git@github.com/xnutsive/dotfiles.git
+      dest: ~/.dotfiles
