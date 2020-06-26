@@ -1,0 +1,10 @@
+---
+- hosts: rpi
+  remote_user: pi
+  tasks:
+  - name: Set SSH keys
+    authorized_key:
+      user: pi
+      state: present
+      key: https://github.com/xnutsive.keys
+

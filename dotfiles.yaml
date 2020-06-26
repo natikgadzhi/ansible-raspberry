@@ -1,0 +1,7 @@
+---
+- hosts: rpi
+  tasks:
+  - name: Copy dotfiles
+    syncronize:
+
+
