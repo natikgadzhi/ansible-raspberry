@@ -8,8 +8,9 @@
       dest: ~/.dotfiles
 
   - name: Make sure the .config directory exists
-    shell:
-      cmd: "mkdir -p ~/.config"
+    file:
+      path: ~/.config 
+      state: directory
 
   - name: Install dotfiles with dotbot
     shell:
