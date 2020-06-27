@@ -6,3 +6,12 @@
     git:
       repo: ssh://git@github.com/xnutsive/dotfiles.git
       dest: ~/.dotfiles
+
+  - name: Make sure the .config directory exists
+    shell:
+      cmd: "mkdir -p ~/.config"
+
+  - name: Install dotfiles with dotbot
+    shell:
+      chdir: ~/.dotfiles
+      cmd: ./install
