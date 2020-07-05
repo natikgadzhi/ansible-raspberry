@@ -8,8 +8,8 @@ configuration (dotfiles), and updating their packages easier.
 2. Manually ssh into the new PI and setup it's hostname in `/etc/hostname` and `/etc/hosts`. I'm using mDNS and naming `rpiX.local`.
 3. Add the new host to `hosts` inventory.
 4. Use `ansible-playbook ssh_keys.yaml` to put your ssh keys to all hosts in `rpi` group. If you don't have sshpass or don't want to install it, you can do that manually.
-5. Run `ansible-playbook dotfiles.yaml` to setup your dotfiles. 
-6. Run `ansible-playbook apt-get.yaml` to install minimal set of packages, including fish, vim, and docker.
+5. Run `ansible-playbook apt-get.yaml` to install minimal set of packages, including fish, vim, git, tmux.
+6. Run `ansible-playbook dotfiles.yaml` to setup your dotfiles. 
 
 
 ### Preparing the microsd card
