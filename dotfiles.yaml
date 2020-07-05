@@ -20,3 +20,10 @@
     shell:
       chdir: ~/.dotfiles
       cmd: ./install
+
+  - name: Set fish as default shell
+    shell: chsh -s $(which fish) pi
+    become: yes 
+
+  - name: Install vim plugins
+    shell: vim +'PlugInstall --sync' +qa
