@@ -2,6 +2,10 @@
 - hosts: rpi
   remote_user: pi
   tasks:
+
+  - name: Make sure github.com is a known host
+    shell: ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+  
   - name: Checkout .dotfiles with git
     git:
       repo: ssh://git@github.com/xnutsive/dotfiles.git
