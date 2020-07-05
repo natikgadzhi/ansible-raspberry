@@ -6,6 +6,7 @@
   - name: Install essentials
     apt:
       name:
+        - git
         - vim
         - tmux
         - fish
