@@ -39,6 +39,7 @@ See [more here](https://www.raspberrypi.org/documentation/configuration/wireless
 - [x] Write down a guide on how to add a new PI and describe the workflow.
 - [x] A task to setup timezone
 - [x] A task to automatically disable password login for pi
+- [x] Add `ansible-lint` to the repo, so I'll be annoyed and fix all the warnings.
 - [ ] Role + task to check and remount hfsplus on network storage pi
 
 #### Applications
