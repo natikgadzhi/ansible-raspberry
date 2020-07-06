@@ -1,8 +1,8 @@
 ---
 - hosts: rpi
   remote_user: pi
-  var_files:
-    - "vars/variables.yml"
+  vars_files:
+    - "../vars/variables.yml"
 
   tasks:
   - name: Set the timezone.

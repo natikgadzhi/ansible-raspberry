@@ -2,8 +2,8 @@
 - hosts: rpi
   remote_user: pi
   become: yes
-  var_files:
-    - "vars/variables.yml"
+  vars_files:
+    - "../vars/variables.yml"
 
   tasks:
   - name: Install essential packages
