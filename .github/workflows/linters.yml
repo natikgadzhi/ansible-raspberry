@@ -1,7 +1,7 @@
 name: Linters
 on: [push, pull_request]
 jobs:
-  build-and-run:
+  ansible-lint:
     runs-on: ubuntu-latest
     
     steps:
