@@ -2,17 +2,17 @@
 - hosts: rpi
   remote_user: pi
   become: yes
+  var_files:
+    - "vars/variables.yml"
+
   tasks:
-  - name: Install essentials
+  - name: Install essential packages
     apt:
-      name:
-        - git
-        - vim
-        - tmux
-        - fish
+      name: "{{item}}"
       force_apt_get: yes
       update_cache: yes
       state: latest
+    with_items: "{{packages}}"
 
   - name: Upgrade all packages to latest versions
     apt:

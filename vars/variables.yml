@@ -1,0 +1,24 @@
+---
+
+# Timezone to set the nodes
+#
+timezone: "America/Los_Angeles"
+
+# Dotfiles repo to use. 
+# The playbook assumes that your dotfiles repo has
+# ./install executable file that would symlink your dotfiles
+# into the system. 
+#
+dotfiles_repo: "xnutsive/dotfiles"
+
+# Github user to fetch SSH keys from.
+github_user: xnutsive
+
+# Packages to install on the nodes.
+packages:
+  - git
+  - vim
+  - tmux 
+  - fish # If you won't be using fish, make sure to tweak playbooks/dotfiles.
+
+
