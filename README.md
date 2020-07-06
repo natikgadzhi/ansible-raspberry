@@ -33,9 +33,20 @@ vim wpa_supplicant.conf # Wifi network, if needed.
 
 See [more here](https://www.raspberrypi.org/documentation/configuration/wireless/headless.md)
 
-#### TODOS
+## TODOS
 
+#### Housekeeping
 - [x] Write down a guide on how to add a new PI and describe the workflow.
-- [ ] Automatically disable password login for pi
+- [x] A task to setup timezone
+- [ ] A task to automatically disable password login for pi
+- [ ] Role + task to check and remount hfsplus on network storage pi
+
+#### Applications
+- [ ] Make sure pihole is working correctly and has a correct hostname
+- [ ] Create a templated `docker-compose.yml`, managed and run by Ansible. 
+  This will require roles and vault.
+
+- [ ] Move pihole, time machine, and portainer to the docker-compose playbook
+
+#### Documentation
 - [ ] Add a link to an article describing my current Pi setup.
-- [ ] Move current docker containers to a managed docker-compose.yml with an ansible role.
