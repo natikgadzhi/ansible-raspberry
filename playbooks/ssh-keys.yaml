@@ -1,8 +1,8 @@
 ---
 - hosts: rpi
   remote_user: pi
-  var_files:
-    - "vars/variables.yml"
+  vars_files:
+    - "../vars/variables.yml"
   
   tasks:
   - name: Set SSH keys
@@ -11,3 +11,10 @@
       state: present
       key: "https://github.com/{{github_user}}.keys"
 
+  - name: Disable password authentication
+    copy:
+      src: "../files/sshd_config"
+      dest: /etc/ssh/
+      force: yes
+      backup: yes
+    become: true
