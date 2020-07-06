@@ -9,8 +9,7 @@ This is a very newbish setup, and my goal with this is to learn. Please don't us
 If you have a bunch of PIs and you'd like to play around with Ansible, do this: 
 1. Fork and clone the repo
 2. Edit the `hosts` file to include the list of your PI computers hostnames
-3. Look through the playbooks, edit them to your liking
-4. Specifically check for any places where my username is hardcoded, especially in `dotfiles.yaml` and `ssh-keys.yaml` — you don't want to add my keys to your machines! 
+3. Edit the `vars/variables.yaml`, most importantly the dotfiles repo and github username used for ssh keys.
 
 If you see that I did something _very wrong_ here, please do file an issue or DM me, I'd be very grateful for an opportunity to learn more.
 
