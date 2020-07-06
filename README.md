@@ -38,7 +38,7 @@ See [more here](https://www.raspberrypi.org/documentation/configuration/wireless
 #### Housekeeping
 - [x] Write down a guide on how to add a new PI and describe the workflow.
 - [x] A task to setup timezone
-- [ ] A task to automatically disable password login for pi
+- [x] A task to automatically disable password login for pi
 - [ ] Role + task to check and remount hfsplus on network storage pi
 
 #### Applications
@@ -47,6 +47,9 @@ See [more here](https://www.raspberrypi.org/documentation/configuration/wireless
   This will require roles and vault.
 
 - [ ] Move pihole, time machine, and portainer to the docker-compose playbook
+
+- [ ] Setup a dynamic inventory, and use it to set dnsmasq in pihole
+- [ ] Setup a DHCP server in pihole?
 
 #### Documentation
 - [ ] Add a link to an article describing my current Pi setup.
