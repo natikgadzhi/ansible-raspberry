@@ -31,7 +31,7 @@ touch ssh        # To enable SSH by default on the new PI
 vim wpa_supplicant.conf # Wifi network, if needed.
 ```
 
-See [more here](https://www.raspberrypi.org/documentation/configuration/wireless/headless.md)
+See [more here](https://www.raspberrypi.org/documentation/configuration/wireless/headless.md).
 
 ## TODOS
 
