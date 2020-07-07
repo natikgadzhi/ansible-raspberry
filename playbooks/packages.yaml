@@ -8,11 +8,11 @@
   tasks:
   - name: Install essential packages
     apt:
-      name: "{{item}}"
+      name: "{{ item }}"
       force_apt_get: yes
       update_cache: yes
       state: latest
-    with_items: "{{packages}}"
+    with_items: "{{ packages }}"
 
   - name: Upgrade all packages to latest versions
     apt:
