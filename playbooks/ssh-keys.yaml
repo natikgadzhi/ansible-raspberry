@@ -2,7 +2,7 @@
 - hosts: rpi
   remote_user: pi
   vars_files:
-    - "../vars/variables.yml"
+    - "../vars/variables.yaml"
 
   tasks:
   - name: Set SSH keys

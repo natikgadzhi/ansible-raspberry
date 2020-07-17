@@ -3,7 +3,7 @@
   remote_user: pi
   become: yes
   vars_files:
-    - "../vars/variables.yml"
+    - "../vars/variables.yaml"
 
   tasks:
   - name: Install essential packages
