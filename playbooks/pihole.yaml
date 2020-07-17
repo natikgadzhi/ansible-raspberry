@@ -4,7 +4,7 @@
 # playbook instead of having a pip3 playbook?
 #
 
-- hosts: dockerized 
+- hosts: dockerized
   remote_user: pi
   vars_files:
     - "../vars/main.yaml"
@@ -20,7 +20,7 @@
     # These three tasks, and the docker-related variables, can be
     # moved into a separate playbook, or better a role. 
     #
-  
+
   - name: Install or update docker
     become: true
     package:
