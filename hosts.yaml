@@ -1,7 +1,10 @@
 all:
   children:
     rpi:
-
+      vars:
+        ansible_ssh_user: pi
+        ansible_python_interpreter: "/usr/bin/python"
+      
       children:
 
         pizero:
