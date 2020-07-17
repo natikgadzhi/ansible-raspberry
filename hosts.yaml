@@ -1,0 +1,22 @@
+all:
+  children:
+    rpi:
+
+      children:
+
+        pizero:
+          hosts:
+            pizero1.local:
+            pizero2.local:
+
+        pi4:
+          hosts:
+            rpi2.local:
+          
+          children:
+            dockerized:
+              hosts:
+                rpi1.local:
+
+
+
