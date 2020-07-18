@@ -10,16 +10,17 @@ all:
         pizero:
           hosts:
             pizero1.local:
+              dhcp_leased_ip: "192.168.86.113"
             pizero2.local:
+              dhcp_leased_ip: "192.168.86.114"
 
         pi4:
           hosts:
             rpi2.local:
+              dhcp_leased_ip: "192.168.86.112"
           
           children:
             dockerized:
               hosts:
                 rpi1.local:
-
-
-
+                  dhcp_leased_ip: "192.168.86.111"
