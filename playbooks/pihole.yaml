@@ -78,4 +78,3 @@
             environment:
               TZ: "{{ timezone }}"
               WEBPASSWORD: "{{ pihole_webpassword }}"
-              VIRTUAL_HOST: "{{ pihole_hostname }}"
