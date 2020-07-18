@@ -6,13 +6,14 @@ all:
         ansible_python_interpreter: "/usr/bin/python3"
       
       children:
-
         pizero:
           hosts:
             pizero1.local:
               dhcp_leased_ip: "192.168.86.113"
             pizero2.local:
               dhcp_leased_ip: "192.168.86.114"
+            pizero3.local:
+              dhcp_leased_ip: "192.168.86.115"
 
         pi4:
           hosts:
