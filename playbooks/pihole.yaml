@@ -39,10 +39,23 @@
       state: started
       enabled: true
 
+  - name: Upload dnsmasq config
+    become: true
+    copy:
+      src: "../files/pihole/02-hosts.conf"
+      dest: "/home/pi/volumes/etc-dnsmasq.d/02-hosts.conf"
+
+  - name: Upload hosts list
+    become: true
+    copy:
+      src: "../files/pihole/hosts.list"
+      dest: "/home/pi/volumes/etc-pihole/hosts.list"
+
   - name: Run pihole/pihole:latest
     docker_compose:
       state: present
       project_name: pihole
+      restarted: true
       definition:
         version: '2'
         services:
@@ -65,6 +78,7 @@
             environment:
               TZ: "{{ timezone }}"
               WEBPASSWORD: "{{ pihole_webpassword }}"
+              VIRTUAL_HOST: "{{ pihole_hostname }}"
 
 
 

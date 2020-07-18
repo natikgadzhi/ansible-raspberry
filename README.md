@@ -58,14 +58,14 @@ See
 
 #### Applications
 
-- [ ] Make sure pihole is working correctly and has a correct hostname
-- [ ] Create a templated `docker-compose.yml`, managed and run by Ansible. This
+- [x] Make sure pihole is working correctly and has a correct hostname
+- [x] Create a templated `docker-compose.yml`, managed and run by Ansible. This
       will require roles and vault.
 
-- [ ] Move pihole, time machine, and portainer to the docker-compose playbook
+- [x] Move pihole, time machine, and portainer to the docker-compose playbook
 
-- [ ] Setup a dynamic inventory, and use it to set dnsmasq in pihole
-- [ ] Setup a DHCP server in pihole?
+- [x] ~~Setup a dynamic inventory, and~~ use the inventory to set dnsmasq in pihole
+- [ ] Transfer Time Machine app to a playbook, with checkfs script!
 
 #### Documentation
 
