@@ -45,12 +45,6 @@
       src: "../files/pihole/02-hosts.conf"
       dest: "/home/pi/volumes/etc-dnsmasq.d/02-hosts.conf"
 
-  - name: Upload hosts list
-    become: true
-    copy:
-      src: "../files/pihole/hosts.list"
-      dest: "/home/pi/volumes/etc-pihole/hosts.list"
-
   - name: Run pihole/pihole:latest
     docker_compose:
       state: present
@@ -61,6 +55,7 @@
         services:
           pihole:
             container_name: compose-pihole
+            hostname: "{{ pihole_hostname }}"
             image: pihole/pihole:latest
             restart: unless-stopped
             ports:
@@ -78,3 +73,5 @@
             environment:
               TZ: "{{ timezone }}"
               WEBPASSWORD: "{{ pihole_webpassword }}"
+              VIRTUAL_HOST: "{{ pihole_hostname }}"
+              
