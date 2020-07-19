@@ -20,6 +20,9 @@ all:
             rpi2.local:
               dhcp_leased_ip: "192.168.86.112"
           
+            rpi3.local:
+              dhcp_leased_ip: "192.168.86.116"
+          
           children:
             dockerized:
               hosts:
