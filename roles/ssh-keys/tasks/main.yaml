@@ -1,0 +1,15 @@
+---
+
+- name: Setup SSH keys
+  authorized_key:
+    user: pi
+    state: present
+    key: "https://github.com/{{ github_user }}.keys"
+
+- name: Disable password authentication
+  copy:
+    src: "sshd_config"
+    dest: "/etc/ssh/"
+    force: yes
+    backup: yes
+  become: true
