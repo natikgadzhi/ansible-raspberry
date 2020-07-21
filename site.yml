@@ -1,0 +1,10 @@
+---
+- hosts: all
+
+  roles:
+    - ssh-keys
+    - prereq
+
+- hosts: pihole
+  roles:
+    - pihole

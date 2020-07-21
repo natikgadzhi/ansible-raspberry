@@ -11,8 +11,8 @@ use these in production.
 If you have a bunch of PIs and you'd like to play around with Ansible, do this:
 
 1. Fork and clone the repo
-2. Edit the `hosts` file to include the list of your PI computers hostnames
-3. Edit the `vars/variables.yaml`, most importantly the dotfiles repo and github
+2. Edit the `hosts` file to include the list of your Raspberry PIs hostnames
+3. Edit the `group_vars/all.yaml`, most importantly the dotfiles repo and github
    username used for ssh keys.
 
 If you see that I did something _very wrong_ here, please do file an issue or DM
@@ -25,12 +25,8 @@ me, I'd be very grateful for an opportunity to learn more.
 2. Manually ssh into the new PI and setup it's hostname in `/etc/hostname` and
    `/etc/hosts`. I'm using mDNS and naming `rpiX.local`.
 3. Add the new host to `hosts` inventory.
-4. Use `ansible-playbook ssh-keys.yaml` to put your ssh keys to all hosts in
-   `rpi` group. If you don't have sshpass or don't want to install it, you can
-   do that manually.
-5. Run `ansible-playbook packages.yaml` to install minimal set of packages,
-   including `fish`, `vim`, `git`, `tmux`.
-6. Run `ansible-playbook dotfiles.yaml` to setup your dotfiles.
+4. `ansible-playbook site.yaml` will run `ssh-keys`, `prereq`, and `pihole`
+   roles on applicable machines.
 
 ### Preparing the microsd card
 
@@ -44,6 +40,33 @@ vim wpa_supplicant.conf # Wifi network, if needed.
 
 See
 [more here](https://www.raspberrypi.org/documentation/configuration/wireless/headless.md).
+
+## Roles
+
+### `ssh-keys`
+
+Puts your ssh keys from github into the Pi, and disables password authentication
+in ssh.
+
+Settings:
+
+- `github_username` in `group_vars/all` — sets username in github to grab public
+  keys from.
+
+### `prereq`
+
+Sets up requirements for any additional roles on the PIs, and prepares the
+environment.
+
+What it does:
+
+- Set timezone to `timezone` var. Default: Pacific.
+- Add github.com to known_hosts so PI can clone / checkout repos.
+- Installs essential packages, for now it explicitly uses `apt`, not `package`
+  module. You can setup `packages` var to install additional packages. By
+  default, it installs `git`, `fish`, `vim`, and `tmux`.
+- Updates all packages to latest versions.
+- Check out and install dotfiles from a repo set in `dotfiles_repo`
 
 ## TODOS
 
@@ -64,7 +87,8 @@ See
 
 - [x] Move pihole, time machine, and portainer to the docker-compose playbook
 
-- [x] ~~Setup a dynamic inventory, and~~ use the inventory to set dnsmasq in pihole
+- [x] ~~Setup a dynamic inventory, and~~ use the inventory to set dnsmasq in
+      pihole
 - [ ] Transfer Time Machine app to a playbook, with checkfs script!
 
 #### Documentation

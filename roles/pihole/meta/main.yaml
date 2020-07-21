@@ -1,0 +1,11 @@
+---
+
+dependencies:
+  - role: geerlingguy.pip
+    vars:
+      pip_package: python3-pip
+
+      pip_install_packages:
+        - name: docker
+        - name: awscli
+

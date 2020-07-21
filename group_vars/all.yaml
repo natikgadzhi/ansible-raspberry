@@ -19,6 +19,4 @@ packages:
   - git
   - vim
   - tmux 
-  - fish # If you won't be using fish, make sure to tweak playbooks/dotfiles.
-
-pihole_hostname: "pihole.respawn.icu"
+  - fish

@@ -1,0 +1,55 @@
+---
+
+- name: Install or update docker
+  become: true
+  package:
+    name: docker
+    state: latest
+
+- name: Install or update required pip3 packages
+  pip:
+    executable: pip3
+    name: "{{ required_pip_packages }}"
+    state: latest
+
+- name: Ensure docker daemon is running
+  service:
+    name: docker
+    state: started
+    enabled: true
+
+- name: Upload dnsmasq config
+  become: true
+  copy:
+    src: "02-hosts.conf"
+    dest: "/home/pi/volumes/etc-dnsmasq.d/02-hosts.conf"
+
+- name: Run pihole/pihole:latest
+  docker_compose:
+    state: present
+    project_name: pihole
+    restarted: true
+    definition:
+      version: '2'
+      services:
+        pihole:
+          container_name: compose-pihole
+          hostname: "{{ pihole_hostname }}"
+          image: pihole/pihole:latest
+          restart: unless-stopped
+          ports:
+            - "53:53/tcp"
+            - "53:53/udp"
+            - "67:67/udp"
+            - "80:80/tcp"
+            - "443:443/tcp"
+          volumes:
+            - "/home/pi/volumes/etc-pihole/:/etc/pihole/"
+            - "/home/pi/volumes/etc-dnsmasq.d/:/etc/dnsmasq.d/"
+          dns:
+            - 127.0.0.1
+            - 1.1.1.1
+          environment:
+            TZ: "{{ timezone }}"
+            WEBPASSWORD: "{{ pihole_webpassword }}"
+            VIRTUAL_HOST: "{{ pihole_hostname }}"
