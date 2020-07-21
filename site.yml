@@ -6,5 +6,5 @@
     - prereq
 
 - hosts: pihole
-  roles: 
+  roles:
     - pihole
