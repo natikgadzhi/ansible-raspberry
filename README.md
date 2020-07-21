@@ -74,7 +74,9 @@ manage the cluster's docker and docker-compose via ansible.
 
 ### `pihole`
 
-Installs and runs pihole in a docker container in all machines in pihole group.
+Installs and runs
+[pihole in a docker container](https://github.com/pi-hole/docker-pi-hole) in all
+machines in pihole group.
 
 _Note:_ `group_vars/dockerized.yaml` is vaulted, and has pihole and time machine
 passwords in there. For your own cluster, you'll want to rm the file, and create
