@@ -68,6 +68,18 @@ What it does:
 - Updates all packages to latest versions.
 - Check out and install dotfiles from a repo set in `dotfiles_repo`
 
+### `pihole`
+
+Installs and runs pihole in a docker container in all machines in pihole group.
+
+_Note:_ `group_vars/pihole.yaml` is vaulted and only has one variable in it:
+`pihole_webpassword`.
+
+Settings:
+
+- `pihole_hostname` — which hostname to set for pihole. That might be specific
+  to your network.
+
 ## TODOS
 
 #### Housekeeping
