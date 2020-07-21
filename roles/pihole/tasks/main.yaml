@@ -10,6 +10,7 @@
   docker_compose:
     state: present
     project_name: pihole
+    pull: true
     restarted: true
     definition:
       version: "2"

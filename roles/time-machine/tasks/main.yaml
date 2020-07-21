@@ -20,6 +20,8 @@
   docker_compose:
     state: present
     project_name: time-machine
+    restarted: true
+    pull: true
     definition:
       version: "2"
       services:
@@ -29,6 +31,7 @@
           restart: unless-stopped
           network_mode: host
           hostname: TimeMachine
+          pull: true
           volumes:
             - "timemachine-var-lib-samba:/var/lib/samba"
             - "timemachine-var-cache-samba:/var/cache/samba"
