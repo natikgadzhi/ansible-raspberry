@@ -1,0 +1,46 @@
+---
+
+- name: Copy checkfs script
+  become: true
+  copy:
+    src: "checkfs.sh"
+    dest: "/usr/local/bin/checkfs.sh"
+    owner: pi
+    group: pi
+    mode: 0755
+
+- name: Set checkfs to run on @reboot
+  cron:
+    name: "Check hfsplus FS is writeable"
+    job: "/usr/local/bin/checkfs.sh"
+    special_time: reboot
+    state: present
+
+- name: Define and run time-machine docker compose service
+  docker_compose:
+    state: present
+    project_name: time-machine
+    definition:
+      version: "2"
+      services:
+        time-machine:
+          container_name: compose-time-machine
+          image: mbentley/timemachine:smb-armv7l
+          restart: unless-stopped
+          network_mode: host
+          hostname: TimeMachine
+          volumes:
+            - "timemachine-var-lib-samba:/var/lib/samba"
+            - "timemachine-var-cache-samba:/var/cache/samba"
+            - "timemachine-run-samba:/run/samba"
+            - "/mnt/timemachine:/opt/timemachine"
+          environment:
+            DEBUG_LEVEL: "0"
+            PASSWORD: "{{ timemachine_password }}"
+      volumes:
+        timemachine-var-lib-samba:
+          external: true
+        timemachine-var-cache-samba:
+          external: true
+        timemachine-run-samba:
+          external: true

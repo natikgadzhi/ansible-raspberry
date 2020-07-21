@@ -1,23 +1,5 @@
 ---
 
-- name: Install or update docker
-  become: true
-  package:
-    name: docker
-    state: latest
-
-- name: Install or update required pip3 packages
-  pip:
-    executable: pip3
-    name: "{{ required_pip_packages }}"
-    state: latest
-
-- name: Ensure docker daemon is running
-  service:
-    name: docker
-    state: started
-    enabled: true
-
 - name: Upload dnsmasq config
   become: true
   copy:
@@ -30,7 +12,7 @@
     project_name: pihole
     restarted: true
     definition:
-      version: '2'
+      version: "2"
       services:
         pihole:
           container_name: compose-pihole

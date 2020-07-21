@@ -1,5 +1,3 @@
-required_pip_packages:
-  - docker
-  - docker-compose
+---
 
 pihole_hostname: "pihole.respawn.icu"

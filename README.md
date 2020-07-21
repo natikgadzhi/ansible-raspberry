@@ -1,12 +1,13 @@
-# Nate's Raspberry PI Ansible Playbooks
+# Home raspberry cluster ansible playbooks
 
-A set of simple ansible playbooks that make adding new Pis, managing their
-configuration (dotfiles), and updating their packages easier.
+Ansible playbook that manages a cluster of local Raspberry Pi machnes running
+Pihole and Time Machine.
+
+This is a personal learning project, please don't use that in production ;) If
+you see that I did something _very wrong_ here, please do file an issue or DM
+me, I'd be very grateful for an opportunity to learn more.
 
 ## Usage
-
-This is a very newbish setup, and my goal with this is to learn. Please don't
-use these in production.
 
 If you have a bunch of PIs and you'd like to play around with Ansible, do this:
 
@@ -14,9 +15,6 @@ If you have a bunch of PIs and you'd like to play around with Ansible, do this:
 2. Edit the `hosts` file to include the list of your Raspberry PIs hostnames
 3. Edit the `group_vars/all.yaml`, most importantly the dotfiles repo and github
    username used for ssh keys.
-
-If you see that I did something _very wrong_ here, please do file an issue or DM
-me, I'd be very grateful for an opportunity to learn more.
 
 ### Setting up a Raspberry PI node
 
@@ -68,41 +66,28 @@ What it does:
 - Updates all packages to latest versions.
 - Check out and install dotfiles from a repo set in `dotfiles_repo`
 
+### `docker`
+
+This is an internal dependency role. It sets up docker, requires pip3 and
+`docker` and `docker-compose` pip packages to be installed so that we can later
+manage the cluster's docker and docker-compose via ansible.
+
 ### `pihole`
 
 Installs and runs pihole in a docker container in all machines in pihole group.
 
-_Note:_ `group_vars/pihole.yaml` is vaulted and only has one variable in it:
-`pihole_webpassword`.
+_Note:_ `group_vars/dockerized.yaml` is vaulted, and has pihole and time machine
+passwords in there. For your own cluster, you'll want to rm the file, and create
+your own vars file, optionally vaulting it, too.
 
 Settings:
 
 - `pihole_hostname` — which hostname to set for pihole. That might be specific
   to your network.
 
-## TODOS
+### `time-machine`
 
-#### Housekeeping
-
-- [x] Write down a guide on how to add a new PI and describe the workflow.
-- [x] A task to setup timezone
-- [x] A task to automatically disable password login for pi
-- [x] Add `ansible-lint` to the repo, so I'll be annoyed and fix all the
-      warnings.
-- [ ] Role + task to check and remount hfsplus on network storage pi
-
-#### Applications
-
-- [x] Make sure pihole is working correctly and has a correct hostname
-- [x] Create a templated `docker-compose.yml`, managed and run by Ansible. This
-      will require roles and vault.
-
-- [x] Move pihole, time machine, and portainer to the docker-compose playbook
-
-- [x] ~~Setup a dynamic inventory, and~~ use the inventory to set dnsmasq in
-      pihole
-- [ ] Transfer Time Machine app to a playbook, with checkfs script!
-
-#### Documentation
-
-- [ ] Add a link to an article describing my current Pi setup.
+Runs
+[`mbentley/docker-timemachine`](https://github.com/mbentley/docker-timemachine)
+in the cluster in docker-compose. Takes `timemachine_password` variable in, it's
+defined in the vaulted `group_vars/dockerized.yaml` by default.

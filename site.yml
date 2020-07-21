@@ -1,10 +1,11 @@
 ---
 - hosts: all
-
   roles:
     - ssh-keys
     - prereq
 
-- hosts: pihole
+- hosts: dockerized
   roles:
+    - docker
     - pihole
+    - time-machine

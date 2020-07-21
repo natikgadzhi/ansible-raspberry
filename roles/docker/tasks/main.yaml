@@ -1,0 +1,13 @@
+---
+
+- name: Install or update docker
+  become: true
+  package:
+    name: docker
+    state: latest
+
+- name: Ensure docker daemon is running
+  service:
+    name: docker
+    state: started
+    enabled: true
