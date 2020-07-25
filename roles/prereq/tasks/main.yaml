@@ -47,8 +47,9 @@
     cmd: ./install
 
 - name: Set fish as default shell
-  shell: chsh -s $(which fish) pi
-  become: yes
-
+  user:
+    name: "{{ ansible_user }}"
+    shell: "{{ user_shell }}"
+    
 - name: Install vim plugins
   shell: vim +'PlugInstall --sync' +qa
