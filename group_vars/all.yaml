@@ -1,8 +1,17 @@
 ---
 
+# Run as pi on all systems.
+ansible_ssh_user: pi
+
+# Use python3
+ansible_python_interpreter: "/usr/bin/python3"
+
 # Timezone to set the nodes
 #
 timezone: "America/Los_Angeles"
+
+# What shell to set for the user, in prereq role.
+user_shell: "/usr/bin/fish"
 
 # Dotfiles repo to use. 
 # The playbook assumes that your dotfiles repo has
@@ -20,3 +29,6 @@ packages:
   - vim
   - tmux 
   - fish
+
+# Directory to store all docker container volumes
+docker_volumes_dir: "/home/{{ ansible_ssh_user }}/volumes"
