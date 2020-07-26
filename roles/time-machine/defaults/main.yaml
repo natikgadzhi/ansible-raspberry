@@ -1,0 +1,15 @@
+---
+
+# Hostname / share name that time machine will promote
+# to the network
+timemachine_hostname: "TimeMachine"
+
+# Volumes mounted to the time machine container
+#
+timemachine_volume_var_lib_samba: "{{ docker_volumes_dir }}/var/lib/samba"
+timemachine_volume_var_cache_samba: "{{ docker_volumes_dir }}/var/cache/samba"
+timemachine_volume_run_samba: "{{ docker_volumes_dir }}/run/samba"
+
+timemachine_volume_storage: "/mnt/storage"
+
+timemachine_docker_path: "/home/{{ ansible_user }}/apps/timemachine/"

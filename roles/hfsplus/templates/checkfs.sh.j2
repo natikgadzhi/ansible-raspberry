@@ -7,8 +7,8 @@
 # executed as pi.
 #
 
-HFS_MOUNT_POINT="/mnt/timemachine" 
-HFS_DEVICE="/dev/sda2"
+HFS_MOUNT_POINT="{{hfsplus_path}}" 
+HFS_DEVICE="{{hfsplus_src}}"
 
 echo "Checking if $HFS_MOUNT_POINT is rw:" 
 
@@ -24,7 +24,7 @@ then
   echo " Failed."
   echo -ne " ----> Attempting to restore fs: "
 
-  sudo umount /mnt/timemachine
+  sudo umount $HFS_MOUNT_POINT
   sudo fsck.hfsplus -f $HFS_DEVICE
   sudo mount -a
 

@@ -1,0 +1,10 @@
+---
+
+# Hostname that Ansible will set for Pihole via
+# docker-compose.
+pihole_hostname: "pihole.respawn.icu"
+
+# Path to the directory where Ansible will put
+# docker-compose.yml on the remote host.
+#
+pihole_docker_path: "/home/{{ ansible_user }}/apps/pihole/"

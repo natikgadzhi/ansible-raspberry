@@ -1,0 +1,10 @@
+---
+
+# There are no defaults for hfsplus path and src, you have to define them
+# when you invoke the role.
+
+# Use checkfs.sf to make sure we can write to the mounted FS?
+hfsplus_use_checkfs: true
+
+# Where to put checkfs.sh?
+hfsplus_checkfs_install_dir: "/usr/local/bin"

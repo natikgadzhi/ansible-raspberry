@@ -1,0 +1,18 @@
+---
+
+version: "2"
+services:
+  time-machine:
+    container_name: compose-time-machine
+    image: mbentley/timemachine:smb-armv7l
+    restart: unless-stopped
+    network_mode: host
+    hostname: "{{ timemachine_hostname }}"
+    volumes:
+      - "{{ timemachine_volume_var_lib_samba }}:/var/lib/samba"
+      - "{{ timemachine_volume_var_cache_samba }}:/var/cache/samba"
+      - "{{ timemachine_volume_run_samba }}:/run/samba"
+      - "{{ timemachine_volume_storage }}:/opt/timemachine"
+    environment:
+      DEBUG_LEVEL: "0"
+      PASSWORD: "{{ timemachine_password }}"

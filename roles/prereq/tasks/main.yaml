@@ -1,12 +1,26 @@
 ---
 
-- name: Set the timezone.
-  become: true
-  timezone:
-    name: "{{ timezone }}"
+# TODO: 
+# For Ubuntu hosts, timezone is set automatically with cloud-init. So this task
+# is not relevant. 
+# Hence this should only run on Raspbian hosts, which can be detected with a
+# conditional. Add the conditional execution for this, or maybe even add two
+# different roles, prereq-raspbian, and prereq-ubuntu? 
+# 
 
-- name: Make sure github.com is a known host
-  shell: ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+# - name: Set the timezone.
+#   become: true
+#   timezone:
+#     name: "{{ timezone }}"
+
+
+- name: Ensure github.com is a known host
+  lineinfile:
+    dest: "~/.ssh/known_hosts"
+    create: yes
+    state: present
+    line: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
+    regexp: "^github\\.com"
 
 - name: Install essential packages
   become: true
@@ -16,14 +30,16 @@
     update_cache: yes
     state: latest
 
-- name: Upgrade all packages to latest versions
-  become: true
-  apt:
-    name: "*"
-    autoclean: yes
-    force_apt_get: yes
-    update_cache: yes
-    state: latest
+# TODO: 
+# Packages are apdated by defualt with cloud-init in Ubuntu. 
+# 
+#   become: true
+#   apt:
+#     name: "*"
+#     autoclean: yes
+#     force_apt_get: yes
+#     update_cache: yes
+#     state: latest
 
 - name: Checkout .dotfiles with git
   git:
@@ -46,6 +62,11 @@
     chdir: ~/.dotfiles
     cmd: ./install
 
+# TODO: 
+# Switch from using shell to using ansible user module.
+# That way, it'll signal OK instead of Changed every time
+# it runs.
+# 
 - name: Set fish as default shell
   user:
     name: "{{ ansible_user }}"

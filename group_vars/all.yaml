@@ -2,6 +2,7 @@
 
 # Run as pi on all systems.
 ansible_ssh_user: pi
+ansible_user: pi
 
 # Use python3
 ansible_python_interpreter: "/usr/bin/python3"
