@@ -1,0 +1,14 @@
+---
+
+# Prepare all hosts: install essentials, pass on dotfiles, etc. 
+# 
+- hosts: all
+  roles:
+    - ssh-keys
+    - prereq
+
+# Make sure dockerized services are up and running
+- hosts: docker
+  roles:
+    - pihole
+    - time-machine
