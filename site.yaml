@@ -1,13 +1,14 @@
 ---
 
-# Prepare all hosts: install essentials, pass on dotfiles, etc. 
-# 
+# Prepare all hosts: install essentials, pass on dotfiles, etc.
+#
 - hosts: all
   roles:
     - ssh-keys
     - prereq
 
-# Make sure dockerized services are up and running
+# On machines running docker, run the specified apps.
+#
 - hosts: docker
   roles:
     - pihole

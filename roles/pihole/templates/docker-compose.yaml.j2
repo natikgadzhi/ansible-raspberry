@@ -14,8 +14,8 @@ services:
       - "80:80/tcp"
       - "443:443/tcp"
     volumes:
-      - "/home/pi/volumes/etc-pihole/:/etc/pihole/"
-      - "/home/pi/volumes/etc-dnsmasq.d/:/etc/dnsmasq.d/"
+      - "{{ pihole_volume_etc_pihole }}:/etc/pihole"
+      - "{{ pihole_volume_etc_dnsmasqd }}:/etc/dnsmasq.d"
     dns:
       - 127.0.0.1
       - 1.1.1.1

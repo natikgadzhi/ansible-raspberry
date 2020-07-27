@@ -6,10 +6,10 @@
     recurse: true
     path: "{{ timemachine_docker_path }}"
 
-- name: Copy docker-compose.yml Pihole spec
+- name: Copy docker-compose.yml for time machine
   template:
-    src: docker-compose.yaml
-    dest: "{{ timemachine_docker_path }}docker-compose.yml"
+    src: docker-compose.yaml.j2
+    dest: "{{ timemachine_docker_path }}docker-compose.yaml"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     mode: 0644

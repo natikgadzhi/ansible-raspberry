@@ -2,14 +2,14 @@
 
 - name: Make sure dnsmasq.d volume directory exists
   file:
-    path: "/home/pi/volumes/etc-dnsmasq.d"
+    path: "{{ pihole_volume_etc_dnsmasqd }}"
     state: directory
     recurse: yes
 
 - name: Upload dnsmasq config
   copy:
     src: "02-hosts.conf"
-    dest: "/home/{{ ansible_user }}/volumes/etc-dnsmasq.d/02-hosts.conf"
+    dest: "{{ pihole_volume_etc_dnsmasqd }}/02-hosts.conf"
 
 - name: Ensure Pihole spec directory exists
   file:
@@ -19,8 +19,8 @@
 
 - name: Copy docker-compose.yml Pihole spec
   template:
-    src: docker-compose.yaml
-    dest: "{{ pihole_docker_path }}docker-compose.yml"
+    src: docker-compose.yaml.j2
+    dest: "{{ pihole_docker_path }}/docker-compose.yaml"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     mode: 0644
