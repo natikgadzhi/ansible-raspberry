@@ -3,7 +3,9 @@
 - name: Ensure hfsprogs package is installed
   become: true
   apt:
-    name: hfsplus
+    name:
+      - hfsplus
+      - hfsprogs
     state: latest
 
 - name: Stop applications using the partition
