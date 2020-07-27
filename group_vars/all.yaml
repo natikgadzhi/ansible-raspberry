@@ -14,10 +14,10 @@ timezone: "America/Los_Angeles"
 # What shell to set for the user, in prereq role.
 user_shell: "/usr/bin/fish"
 
-# Dotfiles repo to use. 
+# Dotfiles repo to use.
 # The playbook assumes that your dotfiles repo has
 # ./install executable file that would symlink your dotfiles
-# into the system. 
+# into the system.
 #
 dotfiles_repo: "xnutsive/dotfiles"
 
@@ -28,7 +28,7 @@ github_user: xnutsive
 packages:
   - git
   - vim
-  - tmux 
+  - tmux
   - fish
 
 # Directory to store all docker container volumes

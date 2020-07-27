@@ -2,15 +2,15 @@
 
 # Verify that /mnt/timemachine/ is available to read and write
 # and if it's not, try fsck-ing it and remounting it back.
-# 
+#
 # This script runs on reboot via chrontab @reboot, and is
 # executed as pi.
 #
 
-HFS_MOUNT_POINT="{{hfsplus_path}}" 
+HFS_MOUNT_POINT="{{hfsplus_path}}"
 HFS_DEVICE="{{hfsplus_src}}"
 
-echo "Checking if $HFS_MOUNT_POINT is rw:" 
+echo "Checking if $HFS_MOUNT_POINT is rw:"
 
 TEST_FNAME=".checkfs-"$(date +%s)
 TEST_FILE_PATH="$HFS_MOUNT_POINT/$TEST_FNAME"

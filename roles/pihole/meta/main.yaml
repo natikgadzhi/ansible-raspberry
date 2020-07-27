@@ -10,8 +10,9 @@ dependencies:
         - docker-compose
 
   - role: geerlingguy.docker
-    vars: 
+    vars:
       docker_apt_arch: aarch64
-      docker_apt_repository: "deb https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} {{ docker_apt_release_channel }}"
+      docker_apt_repository: |
+        "deb https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} {{ docker_apt_release_channel }}"
       docker_users:
         - "{{ ansible_user }}"

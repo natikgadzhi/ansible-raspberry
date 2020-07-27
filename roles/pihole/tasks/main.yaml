@@ -28,6 +28,6 @@
 - name: Run pihole/pihole:latest
   docker_compose:
     state: present
-    project_src: "{{ pihole_docker_path }}" 
+    project_src: "{{ pihole_docker_path }}"
     pull: true
     restarted: true

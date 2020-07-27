@@ -34,7 +34,7 @@
     path: "{{ hfsplus_path }}"
     src: "{{ hfsplus_src }}"
     state: mounted
-    opts: "force,rw" 
+    opts: "force,rw"
     fstype: hfsplus
 
 - name: Copy checkfs script

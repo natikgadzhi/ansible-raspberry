@@ -1,12 +1,12 @@
 ---
 
-# TODO: 
+# TODO:
 # For Ubuntu hosts, timezone is set automatically with cloud-init. So this task
-# is not relevant. 
+# is not relevant.
 # Hence this should only run on Raspbian hosts, which can be detected with a
 # conditional. Add the conditional execution for this, or maybe even add two
-# different roles, prereq-raspbian, and prereq-ubuntu? 
-# 
+# different roles, prereq-raspbian, and prereq-ubuntu?
+#
 
 # - name: Set the timezone.
 #   become: true
@@ -30,9 +30,9 @@
     update_cache: yes
     state: latest
 
-# TODO: 
-# Packages are apdated by defualt with cloud-init in Ubuntu. 
-# 
+# TODO:
+# Packages are apdated by defualt with cloud-init in Ubuntu.
+#
 #   become: true
 #   apt:
 #     name: "*"
@@ -51,7 +51,7 @@
     path: ~/.config
     state: directory
 
-# TODO: 
+# TODO:
 # Check for any files that are in .dotfiles and rm them from ~
 # before running this — since dotfiles installer will error
 # out if the files already exist. Or, better yet, maybe it has an option
@@ -62,15 +62,15 @@
     chdir: ~/.dotfiles
     cmd: ./install
 
-# TODO: 
+# TODO:
 # Switch from using shell to using ansible user module.
 # That way, it'll signal OK instead of Changed every time
 # it runs.
-# 
+#
 - name: Set fish as default shell
   user:
     name: "{{ ansible_user }}"
     shell: "{{ user_shell }}"
-    
+  
 - name: Install vim plugins
   shell: vim +'PlugInstall --sync' +qa
