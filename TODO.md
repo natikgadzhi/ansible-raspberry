@@ -21,8 +21,8 @@ Things to work on when I have time to clean up the ansible setup.
 - [x] Use `geerlingguy.docker` instead of my own `docker` role to clean up the
       repo.
 - [x] Refactor setting the shell to using the user module
-- [x] Move `docker-compose` specifications into separate files from the playbooks
-      in `pihole` and `time-machine`
+- [x] Move `docker-compose` specifications into separate files from the
+      playbooks in `pihole` and `time-machine`
 
 ## Ubuntu-specific tasks
 
