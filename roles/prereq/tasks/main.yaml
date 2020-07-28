@@ -71,6 +71,6 @@
   user:
     name: "{{ ansible_user }}"
     shell: "{{ user_shell }}"
-  
+
 - name: Install vim plugins
   shell: vim +'PlugInstall --sync' +qa
