@@ -1,0 +1,7 @@
+{% for host in groups['raspberry'] %}
+{% set data = hostvars[host] %}
+{% set fqdn = data['fqdn'] %}
+{% set ip_addr = data['ansible_host'] %}
+{% set add_hosts = data['additional_hosts'] |default("") %}
+address=/{{ fqdn }}{{ add_hosts }}/{{ ip_addr }}
+{% endfor %}

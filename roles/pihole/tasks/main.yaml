@@ -7,8 +7,8 @@
     recurse: yes
 
 - name: Upload dnsmasq config
-  copy:
-    src: "02-hosts.conf"
+  template:
+    src: "02-hosts.conf.j2"
     dest: "{{ pihole_volume_etc_dnsmasqd }}/02-hosts.conf"
 
 - name: Ensure Pihole spec directory exists

@@ -4,6 +4,9 @@ Things to work on when I have time to clean up the ansible setup.
 
 ## Features / urgent
 
+- [ ] Fix `ssh-keys.yaml` to only change specific lines of the `sshd_config`
+      without copying the whole file. Looks like Ubuntu locks me out if I
+      copy the config from Debian :D
 - [ ] Make sure `time-machine` role works on Ubuntu and resume the backups.
   - [x] Install `hfsprogs` in the role.
   - [x] Checkfs needs to be templated, and variable defaults need to be set
