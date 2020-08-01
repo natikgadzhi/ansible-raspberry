@@ -28,7 +28,7 @@
     state: directory
     owner: root
     group: root
-    mode: 0777
+    mode: "0777"
 
 - name: Ensure the storage disk is mounted
   become: true
@@ -46,7 +46,7 @@
     dest: "{{ hfsplus_checkfs_install_dir }}/checkfs.sh"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
-    mode: 0755
+    mode: "0755"
   when: hfsplus_use_checkfs|bool
 
 - name: Set checkfs to run on @reboot
