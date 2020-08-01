@@ -1,26 +1,21 @@
 ---
-# TODO:
-# SSH configuration and keys are handled with cloud-init on Ubuntu, so this role
-# should only run on for Rasbian hosts.
-#
-# Although maybe running it on Ubuntu won't hurt — it'll just do nothing, or
-# set the keys if there's anything wrong with them.
-#
+
 - name: Setup SSH keys
   authorized_key:
     user: pi
     state: present
     key: "https://github.com/{{ github_user }}.keys"
 
-# TODO:
-# Replace this with lineinfile module,
-# just make sure that password auth and pam are off, but don't overwrite
-# the whole config.
-#
-- name: Disable password authentication
-  copy:
-    src: "sshd_config"
-    dest: "/etc/ssh/"
-    force: yes
-    backup: yes
+- name: Disable password authentication in /etc/ssh/sshd_config
+  replace:
+    path: /etc/ssh/sshd_config
+    regexp: '^(#\s*)?(PasswordAuthentication).*$'
+    replace: '\2 no'
+  become: true
+
+- name: Disable password authentication in /etc/ssh/sshd_config
+  replace:
+    path: /etc/ssh/sshd_config
+    regexp: '^(#\s*)?(ChallengeResponseAuthentication).*$' 
+    replace: '\2 no'
   become: true
