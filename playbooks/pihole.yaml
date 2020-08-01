@@ -1,0 +1,9 @@
+---
+
+# Only launch the pihole role
+# This playbook is basically a shortcut to only
+# invoke one role with ansible-playbook
+#
+- hosts: docker
+  roles:
+    - pihole

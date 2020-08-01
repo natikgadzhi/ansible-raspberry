@@ -7,9 +7,5 @@
     - ssh-keys
     - prereq
 
-# On machines running docker, run the specified apps.
-#
-- hosts: docker
-  roles:
-    - pihole
-    - time-machine
+- import_playbook: playbooks/pihole.yaml
+- import_playbook: playbooks/time-machine.yaml

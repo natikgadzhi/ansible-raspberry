@@ -16,6 +16,6 @@
 - name: Disable password authentication in /etc/ssh/sshd_config
   replace:
     path: /etc/ssh/sshd_config
-    regexp: '^(#\s*)?(ChallengeResponseAuthentication).*$' 
+    regexp: '^(#\s*)?(ChallengeResponseAuthentication).*$'
     replace: '\2 no'
   become: true
