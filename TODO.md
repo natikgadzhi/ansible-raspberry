@@ -1,9 +1,9 @@
 # TODOS
 
-## Features
-
+- [ ] Write an overview of the time machine and pihole setup.
 - [ ] Setup backups for all nodes with `restic` to a remote location.
-
+- [ ] Make K8s Prometheus accessible from outsite of the K8s cluster,
+      and add a Grafana dashboard with Pi machines metrics.
 
 ## Learn
 

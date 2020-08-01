@@ -1,7 +1,7 @@
 # Home raspberry cluster ansible playbooks
 
-Ansible playbook that manages a cluster of local Raspberry Pi machnes running
-Pihole and Time Machine.
+**Ansible playbook that manages a cluster of local Raspberry Pi machnes running
+Pihole and Time Machine.**
 
 This is a personal learning project, please don't use that in production ;) If
 you see that I did something _very wrong_ here, please do file an issue or DM
