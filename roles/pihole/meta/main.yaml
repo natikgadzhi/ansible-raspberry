@@ -10,6 +10,7 @@ dependencies:
         - docker-compose
 
   - role: geerlingguy.docker
+    become: true
     vars:
       docker_apt_arch: aarch64
       docker_apt_repository: |

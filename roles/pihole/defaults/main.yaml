@@ -12,3 +12,6 @@ pihole_volume_etc_dnsmasqd: "{{ docker_volumes_dir }}/pihole/etc/dnsmasq.d"
 # docker-compose.yml on the remote host.
 #
 pihole_docker_path: "/home/{{ ansible_user }}/apps/pihole"
+
+pihole_upstream_dns_primary: "1.1.1.1"
+pihole_upstream_dns_secondary: "1.0.0.1"

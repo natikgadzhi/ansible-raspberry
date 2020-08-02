@@ -11,6 +11,16 @@
     src: "02-hosts.conf.j2"
     dest: "{{ pihole_volume_etc_dnsmasqd }}/02-hosts.conf"
 
+- name: Git clone notracking/hosts-blocklists
+  git:
+    repo: "git@github.com:notracking/hosts-blocklists.git"
+    dest: "{{ pihole_docker_path }}/notracking-hosts-blocklists"
+
+- name: Make additional blocklists dnsmasq conf
+  template:
+    src: "03-notracking-hosts-list.conf.j2"
+    dest: "{{ pihole_volume_etc_dnsmasqd }}/03-notracking-hosts-list.conf"
+
 - name: Ensure Pihole spec directory exists
   file:
     state: directory

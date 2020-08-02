@@ -1,6 +1,6 @@
 ---
 
-version: "2"
+version: "3"
 services:
   pihole:
     container_name: pihole
@@ -16,6 +16,7 @@ services:
     volumes:
       - "{{ pihole_volume_etc_pihole }}:/etc/pihole"
       - "{{ pihole_volume_etc_dnsmasqd }}:/etc/dnsmasq.d"
+      - "{{ pihole_docker_path }}/notracking-hosts-blocklists:/notracking-hosts-blocklists"
     dns:
       - 127.0.0.1
       - 1.1.1.1
@@ -23,3 +24,5 @@ services:
       TZ: "{{ timezone }}"
       WEBPASSWORD: "{{ pihole_webpassword }}"
       VIRTUAL_HOST: "{{ pihole_hostname }}"
+      DNS1: "{{ pihole_upstream_dns_primary }}"
+      DNS2: "{{ pihole_upstream_dns_secondary }}"
