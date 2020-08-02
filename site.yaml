@@ -7,5 +7,5 @@
     - ssh-keys
     - prereq
 
-- import_playbook: playbooks/pihole.yaml
-- import_playbook: playbooks/time-machine.yaml
+- import_playbook: pihole.yaml
+- import_playbook: time-machine.yaml
