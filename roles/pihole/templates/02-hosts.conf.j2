@@ -1,4 +1,4 @@
-{% for host in groups['raspberry'] %}
+{% for host in groups['all'] %}
 {% set data = hostvars[host] %}
 {% set fqdn = data['fqdn'] %}
 {% set ip_addr = data['ansible_host'] %}

@@ -1,8 +1,7 @@
 ---
-
 # Prepare all hosts: install essentials, pass on dotfiles, etc.
 #
-- hosts: all
+- hosts: raspberry
   roles:
     - ssh-keys
     - prereq
