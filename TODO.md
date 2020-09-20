@@ -1,9 +1,10 @@
 # TODOS
 
-- [ ] Write an overview of the time machine and pihole setup.
+- [ ] Restart the K3s cluster with 3 nodes.
+- [ ] Re-implement dns system as dnscrypt-proxy in K8s
 - [ ] Setup backups for all nodes with `restic` to a remote location.
-- [ ] Make K8s Prometheus accessible from outsite of the K8s cluster,
-      and add a Grafana dashboard with Pi machines metrics.
+- [ ] Make K8s Prometheus accessible from outsite of the K8s cluster, and add a
+      Grafana dashboard with Pi machines metrics.
 
 ## Learn
 
@@ -22,14 +23,12 @@
 
 ## Improving DNS system
 
-- [x] Generate dnsmasq config with a template, iterating over hosts and their
-      fqdns, instead of a static file.
 - [ ] Check if pihole handles IPv6 requests, fix it if not
 - [ ] See if I can run pihole in k3s cluster instead of Docker.
 - [ ] Setup unbound (docker? k3s?) to serve as the local DNS server and double
       check that our DNS requests are not leaking out.
-- [ ] Fix DNS requests with VPN enabled on my laptop.
-
+- [x] Generate dnsmasq config with a template, iterating over hosts and their
+      fqdns, instead of a static file.
 
 ## Archive
 
@@ -38,8 +37,8 @@
 #### Features / Urgent
 
 - [x] Fix `ssh-keys.yaml` to only change specific lines of the `sshd_config`
-      without copying the whole file. Looks like Ubuntu locks me out if I
-      copy the config from Debian :D
+      without copying the whole file. Looks like Ubuntu locks me out if I copy
+      the config from Debian :D
 - [x] Make sure `time-machine` role works on Ubuntu and resume the backups.
   - [x] Install `hfsprogs` in the role.
   - [x] Checkfs needs to be templated, and variable defaults need to be set
@@ -54,9 +53,8 @@
 
 #### Refactoring
 
-- [x] Split `site.yaml` into smaller playbooks, included in the main one, to
-      be able to run only the parts I need to debug, without editing
-      `site.yaml`.
+- [x] Split `site.yaml` into smaller playbooks, included in the main one, to be
+      able to run only the parts I need to debug, without editing `site.yaml`.
 - [x] Use `geerlingguy.docker` instead of my own `docker` role to clean up the
       repo.
 - [x] Refactor setting the shell to using the user module

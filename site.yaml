@@ -5,6 +5,3 @@
   roles:
     - ssh-keys
     - prereq
-
-- import_playbook: pihole.yaml
-- import_playbook: time-machine.yaml
