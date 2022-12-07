@@ -11,18 +11,15 @@ ansible_python_interpreter: "/usr/bin/python3"
 #
 timezone: "America/Los_Angeles"
 
-# What shell to set for the user, in prereq role.
-user_shell: "/usr/bin/fish"
-
 # Dotfiles repo to use.
 # The playbook assumes that your dotfiles repo has
 # ./install executable file that would symlink your dotfiles
 # into the system.
 #
-dotfiles_repo: "xnutsive/dotfiles"
+dotfiles_repo: "natikgadzhi/dotfiles"
 
 # Github user to fetch SSH keys from.
-github_user: xnutsive
+github_user: natikgadzhi
 
 # Packages to install on the nodes.
 packages:

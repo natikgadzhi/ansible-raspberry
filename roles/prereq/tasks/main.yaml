@@ -33,13 +33,14 @@
 # TODO:
 # Packages are apdated by defualt with cloud-init in Ubuntu.
 #
-#   become: true
-#   apt:
-#     name: "*"
-#     autoclean: yes
-#     force_apt_get: yes
-#     update_cache: yes
-#     state: latest
+- name: Upgrade all packages
+  become: true
+  apt:
+    name: "*"
+    autoclean: yes
+    force_apt_get: yes
+    update_cache: yes
+    state: latest
 
 - name: Checkout .dotfiles with git
   git:
@@ -71,6 +72,3 @@
   user:
     name: "{{ ansible_user }}"
     shell: "{{ user_shell }}"
-
-- name: Install vim plugins
-  shell: vim +'PlugInstall --sync' +qa
